@@ -6,6 +6,7 @@ import { useProfile } from "../context/ProfileContext";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import Activity from "./Activity";
+import Mininavbar from "../components/Mininavbar";
 
 export default function Activitylog() {
   // const [edit, setEdit] = useState(true);
@@ -52,6 +53,11 @@ export default function Activitylog() {
           <Sidebar />
         </div>
         <div className={isopen ? "col-9" : "col-12"}>
+        <div className="row">
+            <div className="col-12">
+              <Mininavbar />
+            </div>
+          </div>
           <div className="row">
             
             <div className="col-12">

@@ -100,7 +100,7 @@ export default function Eventmain() {
                 // console.log("i am here");
                 return (
                   <div className="container col-3" key={index}>
-              <div className="card" style={{ width: "auto" }}>
+              <div className="card my-4" style={{ width: "auto" }}>
                 <div className="card-body">
                   <h5 className="card-title">{elem.title}</h5>
                   <p className="card-text">

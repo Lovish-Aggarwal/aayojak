@@ -1,7 +1,7 @@
 .sylebut{
     /* background-image: linear-gradient(to right,#2f105aca, #ae2758); */
     background-color:#632f6fca;
-    height :4em;
+    height :5em;
    
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@
   color: white;
   font-family: 'Cinzel', serif;
   /* font-family: 'Lobster', cursive; */
-font-size: 1.5vw;
+font-size: 1vw;
 font-weight:200;
 font-stretch: ultra-expanded;
 }

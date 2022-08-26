@@ -15,7 +15,7 @@ export default function Sidebar() {
                   <img src={profile} alt="profile" className="profile" />
                 </div>
               </div>
-              <h1 className="username">John Smith</h1>
+              <h1 className="username">Aayojak</h1>
               <hr />
               <NavLink to="/users" className="link">
                 Profile

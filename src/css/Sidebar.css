@@ -29,7 +29,7 @@
 .username {
   font-family: 'Cinzel', serif;
   /* font-family: 'Lobster', cursive; */
-font-size: 3vw;
+font-size: 2vw;
 color: #FFF;
 font-weight: bolder;
 font-stretch: ultra-expanded;
@@ -44,18 +44,18 @@ text-align: center;
   align-items: center;
   color:#FFF;
   font-size: 2vw;
-  font-weight: 700;
+  font-weight: 400;
   margin: 8px;
 }
 
 @media (max-width: 800px){
 .link{
-  font-size: 5vw;
+  font-size: 3vw;
 }
 }
 @media (max-width: 800px){
 .username{
-  font-size: 5vw;
+  font-size: 3vw;
 }
 }
 .tran{

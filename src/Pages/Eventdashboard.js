@@ -4,7 +4,11 @@ import Sidebar from '../components/Sidebar'
 import '../css/Eventdashboard.css'
 import Mininavbar from '../components/Mininavbar'
 
+import { useProfile } from "../context/ProfileContext";
+
 export default function Eventdashboard() {
+  
+  const { profile, setProfile, isopen } = useProfile();
   return (
     <div>
       <div className='row'>
@@ -14,12 +18,12 @@ export default function Eventdashboard() {
       </div>
 
       <div className='row' style={{height:"100vh"}}>
-        <div className='col-3 sidebar'>
+        <div className={isopen ? "col-3 sidebar" : ""}>
             <Sidebar/>
         </div>
 
 
-        <div className="col-9">
+        <div className={isopen ? "col-9" : "col-12"}>
             <Mininavbar/>
           <div className="row">
             <div className="col-12 profilelogo">
@@ -30,7 +34,7 @@ export default function Eventdashboard() {
           <div className="row">
             <div className="col-12 column1">
               <div className="container detail">
-                <div className="col-lg-10">
+                <div className="col-lg-10 ">
                   <div className="card mb-4">
                     <div className="card-body">
                       <div className="row">
@@ -110,7 +114,7 @@ export default function Eventdashboard() {
                           <p className="mb-0">Organisation name</p>
                         </div>
                         <div className="col-sm-9">
-                          <p className="text-muted mb-0">chuitya UIET</p>
+                          <p className="text-muted mb-0"> UIET</p>
                         </div>
                       </div>
                       <hr />
@@ -135,9 +139,6 @@ export default function Eventdashboard() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-12 column1">
-            <button className="editbtn my-3">Report Generation</button>
             </div>
           </div>
         </div>

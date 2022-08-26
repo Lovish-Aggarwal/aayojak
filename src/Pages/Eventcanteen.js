@@ -6,6 +6,8 @@ import { useProfile } from "../context/ProfileContext";
 import "../css/Eventcanteen.css";
 
 export default function Eventcanteen() {
+  
+  const { isopen } = useProfile();
   //search
   let btndpl=false
   let [isbook,setbook] = useState(false);
@@ -139,11 +141,11 @@ return () => {
       </div>
 
       <div className="row" style={{ height: "100vh" }}>
-        <div className="col-3 sidebar">
+        <div className={isopen ? "col-3 sidebar" : ""}>
           <Sidebar />
         </div>
 
-        <div className="col-9">
+        <div className={isopen ? "col-9" : "col-12"}>
           <Mininavbar />
           <div className="row">
             <div className="col-12 profilelogo">
@@ -152,12 +154,12 @@ return () => {
           </div>
 
           <div className="container">
-            <div className="row">
+            <div className="row my-3">
               <div className="col-2 head">canteen name</div>
               <div className="col-2 head">Location</div>
               <div className="col-2 head">Email</div>
               <div className="col-2 head">Phone no.</div>
-              <div className="col-2 head">Booking</div>
+              <div className="col-4 head">Booking</div>
             </div>
             <hr />
            {
@@ -167,18 +169,18 @@ return () => {
               // console.log(event.eventdate)
             if(elem.location!==undefined &&event.location!==undefined&& elem.location.toUpperCase()===event.location.toUpperCase()){
               // console.log("hereee");
-            return (<div className="row" key={index}>
+            return (<div className="row my-3" key={index}>
               <div className="col-2 head1">{elem.name}</div>
               <div className="col-2 head1">{elem.location}</div>
               <div className="col-2 head1">{elem.email}</div>
               <div className="col-2 head1">{elem.phonenumber}</div>
-              <div className="col-2 head1">
+              <div className="col-4 head1">
                 {" "}
                 { 
                   btndpl=(event.eventdate!==undefined &&elem.whetherbooked.findIndex(x=>x.date===event.eventdate.split('T')[0])===-1)
                 }
                 {
-                  btndpl&&<button className="editbtn1 my-3" onClick={()=>{bookAudi(elem)}}>Book Canteen</button>
+                  btndpl&&<button className="editbtn1 my-3 mx-3" onClick={()=>{bookAudi(elem)}}>Book Canteen</button>
                 }
                 {
                   !btndpl&&<button className="editbtn1 my-3" disabled>Unavailable</button>
@@ -227,8 +229,8 @@ return () => {
             <div className="row">
            
               <div className="col-2 head">canteen name</div>
-              <div className="col-2 head">Location</div>
-              <div className="col-2 head">Email</div>
+              <div className="col-3 head">Location</div>
+              <div className="col-3 head">Email</div>
               <div className="col-2 head">Phone no.</div>
               <div className="col-2 head">Booking</div>
               {/* <div className="col-1 head">#</div> */}
@@ -237,11 +239,11 @@ return () => {
            
             {
               canteens && canteens.map(function(elem,index){
-             return (<div className="row canteenalldata" key={index}>
+             return (<div className="row canteenalldata my-4" key={index}>
               
               <div className="col-2 head1">{elem.name}</div>
-              <div className="col-2 head1 location">{elem.location}</div>
-              <div className="col-2 head1">{elem.email}</div>
+              <div className="col-3 head1 location">{elem.location}</div>
+              <div className="col-3 head1">{elem.email}</div>
               <div className="col-2 head1">{elem.phonenumber}</div>
               
               <div className="col-1 head1">

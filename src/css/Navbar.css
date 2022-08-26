@@ -20,14 +20,14 @@
   }
 
   .logutbtn {
-    width: auto;
+    width: 10vw !important;
     height: 3em;
     border-width: 2px;
     border-color: black;
     /* background-color: rgb(32, 177, 255); */
-    font-size: large;
-    color: purple;
-    background-color: rgb(255, 256, 256);
+    font-size: 1vw;
+    color: #fff;
+    background-color: #632D68 !important;
     transition: 0.5s;
     border-radius: 0.5em;
     cursor: pointer;
@@ -36,4 +36,11 @@
   }
   .navbar{
     text-align: right;
+  }
+
+  @media (max-width:800px){
+    .logutbtn{
+      width:15vw !important;
+      font-size: 3vw;
+    }
   }

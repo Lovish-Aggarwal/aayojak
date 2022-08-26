@@ -3,8 +3,11 @@ import Mininavbar from "../components/Mininavbar";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import "../css/Eventaudi.css";
+import { useProfile } from "../context/ProfileContext";
 
 export default function Eventaudi() {
+  
+  const { isopen } = useProfile();
    //search
    React.useEffect(() => {
     let search = document.getElementById("search");
@@ -54,11 +57,11 @@ export default function Eventaudi() {
         </div>
   
         <div className="row" style={{ height: "100vh" }}>
-          <div className="col-3 sidebar">
+          <div className={isopen ? "col-3 sidebar" : ""}>
             <Sidebar />
           </div>
   
-          <div className="col-9">
+          <div className={isopen ? "col-9" : "col-12"}>
             <Mininavbar />
             <div className="row">
               <div className="col-12 profilelogo">
