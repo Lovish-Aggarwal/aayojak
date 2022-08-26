@@ -75,6 +75,12 @@ function App() {
         <Route path="/createEvent" element={<PrivateRoute />}>
           <Route path="/createEvent" element={<EventForm />}></Route>
         </Route>
+        <Route path="/eventDashboard" element={<PrivateRoute />}>
+          <Route path="/eventDashboard" element={<Eventdashboard />}></Route>
+        </Route>
+        <Route path="/eventCanteen" element={<PrivateRoute />}>
+          <Route path="/eventCanteen" element={<Eventcanteen />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import '../css/Mininavbar.css'
 
 export default function Mininavbar() {
@@ -6,10 +7,10 @@ export default function Mininavbar() {
     <div>
       <div className='row'>
         <div className='col-2 sylebut'>
-            <a href="/" className='color'>Dashboard</a>
+            <NavLink to="/eventDashboard" className='color'>Dashboard</NavLink>
         </div>
         <div className='col-3 sylebut'>
-            <a href="/" className='color'>Canteen detail</a>
+            <NavLink to="/eventCanteen" className='color'>Canteen detail</NavLink>
         </div>
         <div className='col-3 sylebut'>
             <a href="/" className='color'>Auditorium</a>
