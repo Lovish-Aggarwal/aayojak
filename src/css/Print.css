@@ -1,0 +1,24 @@
+.printbtn{
+    /* align-items: center; */
+      /* font-family: 'Cinzel', serif;/ */
+  width: 30% !important;
+  height: 3em !important;
+  border-width: 2px !important;
+  border-color: rgb(255, 255, 255) !important;
+  background-color: #632d68 !important;
+  font-size: large !important;
+  color: #fff !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transition: 0.5s !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  margin: 1.5em;
+}
+.center{
+    display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

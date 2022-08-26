@@ -14,6 +14,10 @@ import Eventcanteen from './Pages/Eventcanteen'
 import Eventaudi from './Pages/Eventaudi'
 import Socialmedia from './Pages/Socialmedia'
 import Eventdashboard from "./Pages/Eventdashboard";
+import Email from "./Pages/Email";
+import Eventhead from "./Pages/Eventhead";
+import Activitylog from "./Pages/Activitylog";
+import Print from "./Pages/Print";
 
 
 
@@ -70,7 +74,7 @@ function App() {
           <Route path="/socialmedia" element={<Socialmedia />}></Route>
         </Route>
         <Route path="/email" element={<PrivateRoute />}>
-          <Route path="/email" element={<Eventdashboard />}></Route>
+          <Route path="/email" element={<Email />}></Route>
         </Route>
         <Route path="/createEvent" element={<PrivateRoute />}>
           <Route path="/createEvent" element={<EventForm />}></Route>
@@ -80,6 +84,18 @@ function App() {
         </Route>
         <Route path="/eventCanteen" element={<PrivateRoute />}>
           <Route path="/eventCanteen" element={<Eventcanteen />}></Route>
+        </Route>
+        <Route path="/committee" element={<PrivateRoute />}>
+          <Route path="/committee" element={<Eventhead />}></Route>
+        </Route>
+        <Route path="/eventaudi" element={<PrivateRoute />}>
+          <Route path="/eventaudi" element={< Eventaudi/>}></Route>
+        </Route>
+        <Route path="/activitylog" element={<PrivateRoute />}>
+          <Route path="/activitylog" element={<Activitylog />}></Route>
+        </Route>
+        <Route path="/report" element={<PrivateRoute />}>
+          <Route path="/report" element={<Print/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
