@@ -24,9 +24,9 @@ function App() {
     window.onload = function()
     {
       const cookie= document.cookie;
-      console.log(cookie)
+      // console.log(cookie)
       var index= cookie.lastIndexOf('}')
-      console.log(index)
+      // console.log(index)
       // {"email":"gg@kuk.ac.in","password":"h123","userType":"faculty","error":false,"doRedirect":false}; expires=8/23/2022, 3:04:21 PM
       if(index===-1)
       {
@@ -34,9 +34,9 @@ function App() {
       }
       else{
       let result = cookie.substring(0, index+1);
-      console.log(JSON.parse(result))
+      // console.log(JSON.parse(result))
        setProfile(JSON.parse(result))
-      console.log(profile)
+      // console.log(profile)
       }
     }
   }, [profile,setProfile])
@@ -44,7 +44,7 @@ function App() {
   window.onbeforeunload = function()
   {
     var now = new Date();
-    console.log(now)
+    // console.log(now)
     var minutes = 0.5;
     now.setTime(now.getTime() + (minutes * 60 * 1000));
     var cookieString = JSON.stringify(profile);

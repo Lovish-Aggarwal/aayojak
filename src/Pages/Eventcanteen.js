@@ -7,15 +7,81 @@ import "../css/Eventcanteen.css";
 
 export default function Eventcanteen() {
   //search
-
-  let [event,setEvent] = useState();
-
-  let [canteens,setCanteen] = useState();
-
+  let btndpl=false
+  let [isbook,setbook] = useState(false);
+  let [event,setEvent] = useState([]);
+  let [canteens,setCanteen] = useState([]);
   const {profile,setProfile} = useProfile();
- 
-  console.log("this is profile id")
-  console.log(profile.eventid);
+
+  // console.log("this is profile id")
+  // console.log(profile.eventid);
+  
+
+  const bookAudi =(canteen)=>{
+
+
+  // console.log("hey i am book audi function")
+     let id = canteen._id;
+    //  console.log(canteen)
+    // console.log(event)
+
+    fetch(`http://localhost:3100/canteen/bookCanteen/${profile.eventid}/${id}`,{
+      method:"POST",
+      headers:{
+        "content-type":"application/json",
+        "Accept" : "application/json"
+      },
+      body:JSON.stringify({name:event.title,date:event.eventdate})
+    })
+    .then((res)=>{
+        alert("booked successfully") 
+    })
+     .catch((err)=>{
+        alert("already booked")
+     }) 
+  }
+
+
+  
+  function fetchCanteen(){
+    fetch(`http://localhost:3100/canteen/getAllCanteen`,
+    {
+     method:"GET",
+     headers:{
+       Accept : "application/json"
+     }
+    }
+   ).then((result)=>{
+     result.json().then((ev)=>{
+       setCanteen(ev)
+       
+      //  console.log("these are canteen")
+      //  console.log(ev)
+     })
+       
+   })
+   .catch((err)=>{
+    //  console.log(err)
+   })
+  }
+  
+  function fetchEvents(){
+    fetch(`http://localhost:3100/events/getConfirmedEventById/${profile.eventid}`,{
+      method:'GET',
+      headers:{
+         Accept: "application/json"  
+      },
+    }).then((result)=>{
+       result.json().then((out)=>{
+        // console.log(out)
+          setEvent(out)
+       })
+    })
+    .catch((err)=>{
+      // console.log(err)
+    })
+  }
+  
 
   React.useEffect(() => {
     
@@ -56,43 +122,15 @@ return () => {
   },[]);
 
 
+  // console.log(profile.eventid)
+ if(canteens.length===0)
+  fetchCanteen()
+ if(event.length===0) 
+  fetchEvents()
   
-  console.log(profile.eventid)
   return (
-  //   (fetch(`http://localhost:3100/canteen/getAllCanteen`,
-  //   {
-  //    method:"GET",
-  //    headers:{
-  //      Accept : "application/json"
-  //    }
-  //   }
-  //  ).then((result)=>{
-  //    result.json().then((ev)=>{
-  //      setCanteen(ev)
-       
-  //      console.log("these are canteen")
-  //      console.log(ev)
-  //    })
-       
-  //  })
-  //  .catch((err)=>{
-  //    console.log(err)
-  //  }))&&
-  //   ( fetch(`http://localhost:3100/events/getConfirmedEventById/${profile.eventid}`,{
-  //     method:'GET',
-  //     headers:{
-  //        Accept: "application/json"  
-  //     },
-  //   }).then((result)=>{
-  //      result.json().then((out)=>{
-  //       console.log(out)
-  //         setEvent(out)
-  //      })
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err)
-  //   })
-  //   )&&
+      
+     (
     <div>
       <div className="row">
         <div className="col-12 head">
@@ -119,27 +157,33 @@ return () => {
               <div className="col-2 head">Location</div>
               <div className="col-2 head">Email</div>
               <div className="col-2 head">Phone no.</div>
-              <div className="col-2 head">Quotes</div>
-              <div className="col-2 head">#</div>
+              <div className="col-2 head">Booking</div>
             </div>
             <hr />
            {
            
            event && canteens&&canteens.map((elem,index)=>{
-              console.log(elem.location)
-              console.log(event.location)
-            if(elem.location.toUpperCase()===event.location.toUpperCase()){
-              console.log("hereee");
+              
+              // console.log(event.eventdate)
+            if(elem.location!==undefined &&event.location!==undefined&& elem.location.toUpperCase()===event.location.toUpperCase()){
+              // console.log("hereee");
             return (<div className="row" key={index}>
-              <div className="col-2 head1">bsc canteen</div>
-              <div className="col-2 head1">opp kuk </div>
-              <div className="col-2 head1">abc @abc.com</div>
-              <div className="col-2 head1">7894561230</div>
-              <div className="col-2 head1">365420</div>
+              <div className="col-2 head1">{elem.name}</div>
+              <div className="col-2 head1">{elem.location}</div>
+              <div className="col-2 head1">{elem.email}</div>
+              <div className="col-2 head1">{elem.phonenumber}</div>
               <div className="col-2 head1">
                 {" "}
-                <button className="editbtn1 my-3">send email</button>
-              </div>
+                { 
+                  btndpl=(event.eventdate!==undefined &&elem.whetherbooked.findIndex(x=>x.date===event.eventdate.split('T')[0])===-1)
+                }
+                {
+                  btndpl&&<button className="editbtn1 my-3" onClick={()=>{bookAudi(elem)}}>Book Canteen</button>
+                }
+                {
+                  !btndpl&&<button className="editbtn1 my-3" disabled>Unavailable</button>
+                }
+                </div>
             </div>)
             }
             })
@@ -181,12 +225,12 @@ return () => {
               </div>
             </div>
             <div className="row">
-              <div className="col-2 head">*</div>
+           
               <div className="col-2 head">canteen name</div>
               <div className="col-2 head">Location</div>
               <div className="col-2 head">Email</div>
               <div className="col-2 head">Phone no.</div>
-              <div className="col-2 head">Quotes</div>
+              <div className="col-2 head">Booking</div>
               {/* <div className="col-1 head">#</div> */}
             </div>
             <hr />
@@ -194,21 +238,18 @@ return () => {
             {
               canteens && canteens.map(function(elem,index){
              return (<div className="row canteenalldata" key={index}>
-              <div className="col-2">
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox"
-                  className="check"
-                />
-              </div>
+              
               <div className="col-2 head1">{elem.name}</div>
-              <div className="col-2 head1 location">delhi</div>
-              <div className="col-2 head1">abc @abc.com</div>
-              <div className="col-2 head1">7894561230</div>
-              <div className="col-2 head1">365420</div>
-              {/* <div className="col-1 head1">
-                <button className="editbtn1 my-3">send email</button>
-              </div> */}
+              <div className="col-2 head1 location">{elem.location}</div>
+              <div className="col-2 head1">{elem.email}</div>
+              <div className="col-2 head1">{elem.phonenumber}</div>
+              
+              <div className="col-1 head1">
+                {
+                (event.eventdate!==undefined && elem.whetherbooked.findIndex(x=>x.date===event.eventdate.split('T')[0])===-1)&& 
+                <button className="editbtn1 my-3"  onClick={()=>{bookAudi(elem)}}>Book Canteen</button>
+                }
+                </div>
             
             </div>
             )
@@ -220,5 +261,5 @@ return () => {
         </div>
       </div>
     </div>
-  );
+  ));
 }

@@ -5,7 +5,7 @@ import "../css/Sidebar.css"
 import profile from "../logo/Aayojak-logos/aayojaklogo1.jpg";
 export default function Sidebar() {
   const {isopen}= useProfile();
-  console.log(isopen);
+  // console.log(isopen);
   return (
     <div style={{display : isopen===false ? "none" : ""}}>
           <div className="row">

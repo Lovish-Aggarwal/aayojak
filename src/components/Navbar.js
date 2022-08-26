@@ -6,7 +6,7 @@ import logo from "../logo/Aayojak-logos (1)/Aayojak-logos_white.png";
 export default function Navbar() {
   // eslint-disable-next-line no-unused-vars
   const {profile,setProfile,isopen,setIsOpen}=useProfile()
-  console.log("Navbar",profile)
+  // console.log("Navbar",profile)
   const [logout_status,change]=useState(false);
   const logout=()=>{
     setProfile(null)

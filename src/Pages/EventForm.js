@@ -54,7 +54,7 @@ export default function EventForm() {
          return res.json();
     })
     .catch((error)=>{
-         console.log(error);
+        //  console.log(error);
     })
     setnavi(true);
     // console.log(data);

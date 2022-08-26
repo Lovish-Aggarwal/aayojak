@@ -52,7 +52,7 @@ export default function Login() {
       });
       return await response.json();
     } catch (err) {
-      return console.log(err);
+      // return console.log(err);
     }
   };
 

@@ -24,7 +24,7 @@ export default function Socialmedia() {
 
 
   const myHandler = (events) => {
-    console.log(events.target.files[0]);
+    // console.log(events.target.files[0]);
   };
 
   return (

@@ -13,7 +13,7 @@ export default function Profile() {
     // console.log(temp)
     setProfile(temp);
   }, [profile, setProfile]);
-  console.log("profile page",profile)
+  // console.log("profile page",profile)
   return (
     <div>
       <div className="row">

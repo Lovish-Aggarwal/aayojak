@@ -8,13 +8,13 @@ import "../css/Eventmain.css";
 
 export default function Eventmain() {
   // let data = [];
-  console.log("component reloaded");
+  // console.log("component reloaded");
   const { profile, setProfile, isopen } = useProfile();
   const [test, setTest] = useState([]);
   const [navidone,setnavidone]= useState(false);
     const navi=(id)=>{
-      console.log("swww")
-      console.log(id)
+      // console.log("swww")
+      // console.log(id)
 
       setProfile({...profile,eventid:id})
       setnavidone(true)
@@ -35,7 +35,7 @@ export default function Eventmain() {
       );
       // console.log(res)
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
 
     return res.json();
@@ -43,7 +43,7 @@ export default function Eventmain() {
 
   useEffect(() => {
     getAllEvents("62f206fb51f34884e7a6f35b").then((res) => {
-      console.log(res.obj);
+      // console.log(res.obj);
       setTest(res.obj);
     });
   
@@ -59,7 +59,7 @@ export default function Eventmain() {
   }, [profile, setProfile]);
   if(navidone===true)
     {
-    console.log("navigate to event dashboard")
+    // console.log("navigate to event dashboard")
     return <Navigate to="/eventDashboard"></Navigate>
     }
   return (
